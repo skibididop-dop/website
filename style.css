@@ -1,0 +1,161 @@
+:root {
+  --bg: #0f1226;
+  --card: #171a34;
+  --text: #f3f5ff;
+  --muted: #c1c6f0;
+  --primary: #00c2ff;
+  --accent: #7e7bff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  background: linear-gradient(180deg, #0a0d1c 0%, #131739 100%);
+  color: var(--text);
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo span { color: var(--primary); }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.hero {
+  padding-bottom: 3rem;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding-top: 2.5rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(126, 123, 255, 0.2);
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 1rem 0;
+}
+
+.btn {
+  display: inline-block;
+  border-radius: 12px;
+  padding: 0.75rem 1.2rem;
+  font-weight: 700;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  color: #050818;
+  text-decoration: none;
+}
+
+.btn-outline {
+  border: 1px solid #6b72be;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.hero-actions { display: flex; gap: 1rem; margin-top: 1.25rem; }
+
+.hero-card {
+  background: rgba(23, 26, 52, 0.95);
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #2e3468;
+}
+
+.section-title {
+  margin: 2rem 0 1rem;
+  font-size: 1.7rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.products {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.product {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 1rem;
+  border: 1px solid #2a2f58;
+}
+
+.product .price {
+  color: #7dffd0;
+  font-weight: 700;
+}
+
+.features {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.features article {
+  background: var(--card);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.steps li { margin-bottom: 0.6rem; color: var(--muted); }
+
+footer {
+  margin-top: 3rem;
+  border-top: 1px solid #2c3158;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
