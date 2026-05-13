@@ -1,0 +1,178 @@
+:root {
+  --bg: #d63f3f;
+  --modal: #f5f5f6;
+  --border: #d0d4db;
+  --input-bg: #ebebed;
+  --placeholder: #97a4b7;
+  --primary: #ff0b0b;
+  --text: #111111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  background: radial-gradient(circle at center, #ee6f6f 0%, var(--bg) 75%);
+  min-height: 100vh;
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-modal {
+  width: min(460px, 100%);
+  background: var(--modal);
+  border-radius: 8px;
+  padding: 24px 24px 16px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  color: #969ca6;
+  cursor: pointer;
+}
+
+h1 {
+  margin: 20px 0 34px;
+  text-align: center;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.auth-form {
+  display: grid;
+  gap: 16px;
+}
+
+.field input {
+  width: 100%;
+  border: none;
+  background: var(--input-bg);
+  border-radius: 12px;
+  height: 58px;
+  padding: 0 16px;
+  font-size: 33px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.field input::placeholder {
+  color: var(--placeholder);
+}
+
+.field-password {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca2ac;
+  font-size: 20px;
+}
+
+.fake-recaptcha {
+  border: 2px solid var(--border);
+  background: #fff;
+  height: 82px;
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  column-gap: 12px;
+  padding: 0 12px;
+  max-width: 330px;
+}
+
+.fake-recaptcha .checkbox {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #64676d;
+}
+
+.fake-recaptcha p {
+  margin: 0;
+  font-size: 32px;
+}
+
+.fake-recaptcha small {
+  color: #666;
+  font-size: 18px;
+}
+
+.forgot {
+  text-decoration: none;
+  color: #000;
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: -4px;
+}
+
+.btn {
+  height: 62px;
+  border-radius: 12px;
+  border: 1px solid #babec6;
+  font-size: 40px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border: none;
+  color: #fff;
+  background: var(--primary);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #2e3e53;
+  font-weight: 700;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+
+.form-message {
+  margin: 4px 2px 0;
+  font-size: 20px;
+  color: #1f7a1f;
+  min-height: 24px;
+}
+
+.form-message.error {
+  color: #c40000;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  .field input,
+  .btn,
+  .fake-recaptcha p,
+  .forgot {
+    font-size: 30px;
+  }
+}

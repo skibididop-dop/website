@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopTuiMu | Đăng nhập / Đăng ký</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="auth-modal" id="auth-modal">
+        <button class="close-btn" type="button" aria-label="Đóng">×</button>
+
+        <div class="tab-content active" id="register-tab">
+          <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
+
+          <form class="auth-form" id="register-form">
+            <label class="field">
+              <input type="text" name="username" placeholder="Nhập Tài Khoản..." required />
+            </label>
+
+            <label class="field field-password">
+              <input type="password" name="password" placeholder="Nhập Mật Khẩu..." required />
+              <span class="eye">◌</span>
+            </label>
+
+            <label class="field field-password">
+              <input type="password" name="confirmPassword" placeholder="Nhập Lại Mật Khẩu..." required />
+              <span class="eye">◌</span>
+            </label>
+
+            <div class="fake-recaptcha">
+              <div class="checkbox"></div>
+              <p>I'm not a robot</p>
+              <small>reCAPTCHA</small>
+            </div>
+
+            <button class="btn btn-primary" type="submit">ĐĂNG KÝ</button>
+            <button class="btn btn-secondary" type="button" data-switch="login">Đăng nhập</button>
+            <p class="form-message" id="register-message"></p>
+          </form>
+        </div>
+
+        <div class="tab-content" id="login-tab">
+          <h1>ĐĂNG NHẬP TÀI KHOẢN</h1>
+
+          <form class="auth-form" id="login-form">
+            <label class="field">
+              <input type="text" name="username" placeholder="Nhập Tài Khoản..." required />
+            </label>
+
+            <label class="field field-password">
+              <input type="password" name="password" placeholder="Nhập Mật Khẩu..." required />
+              <span class="eye">◌</span>
+            </label>
+
+            <a class="forgot" href="#">Quên mật khẩu ?</a>
+
+            <button class="btn btn-primary" type="submit">ĐĂNG NHẬP</button>
+            <button class="btn btn-secondary" type="button" data-switch="register">TẠO TÀI KHOẢN</button>
+            <p class="form-message" id="login-message"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
