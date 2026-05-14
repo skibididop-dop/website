@@ -14,6 +14,10 @@ document.querySelectorAll("[data-switch]").forEach((button) => {
 
 function setMessage(elementId, text, isError = false) {
   const el = document.getElementById(elementId);
+  if (!el) {
+    console.error(`Element ${elementId} not found`);
+    return;
+  }
   el.textContent = text;
   el.classList.toggle("error", isError);
 }
@@ -32,37 +36,48 @@ async function submitJSON(url, payload) {
   return data;
 }
 
-document.getElementById("register-form").addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const formData = new FormData(event.currentTarget);
+const registerForm = document.getElementById("register-form");
+if (registerForm) {
+  registerForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
 
-  try {
-    const result = await submitJSON("/api/register", {
-      username: formData.get("username"),
-      password: formData.get("password"),
-      confirmPassword: formData.get("confirmPassword"),
-    });
+    try {
+      const result = await submitJSON("/api/register", {
+        username: formData.get("username"),
+        password: formData.get("password"),
+        confirmPassword: formData.get("confirmPassword"),
+      });
 
-    setMessage("register-message", result.message);
-    event.currentTarget.reset();
-    setTimeout(() => switchTab("login"), 800);
-  } catch (error) {
-    setMessage("register-message", error.message, true);
-  }
-});
+      setMessage("register-message", result.message);
+      if (event.target && typeof event.target.reset === "function") {
+        event.target.reset();
+      }
+      setTimeout(() => switchTab("login"), 800);
+    } catch (error) {
+      setMessage("register-message", error.message, true);
+    }
+  });
+}
 
-document.getElementById("login-form").addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const formData = new FormData(event.currentTarget);
+const loginForm = document.getElementById("login-form");
+if (loginForm) {
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
 
-  try {
-    const result = await submitJSON("/api/login", {
-      username: formData.get("username"),
-      password: formData.get("password"),
-    });
+    try {
+      const result = await submitJSON("/api/login", {
+        username: formData.get("username"),
+        password: formData.get("password"),
+      });
 
-    setMessage("login-message", result.message);
-  } catch (error) {
-    setMessage("login-message", error.message, true);
-  }
-});
+      setMessage("login-message", result.message);
+      if (event.target && typeof event.target.reset === "function") {
+        event.target.reset();
+      }
+    } catch (error) {
+      setMessage("login-message", error.message, true);
+    }
+  });
+}
