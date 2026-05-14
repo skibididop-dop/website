@@ -36,6 +36,38 @@ async function submitJSON(url, payload) {
   return data;
 }
 
+function showDashboard(user) {
+  document.getElementById("auth-modal").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
+  document.getElementById("user-name").textContent = user.username;
+  document.getElementById("user-username").textContent = user.username;
+  document.getElementById("user-id").textContent = user.id;
+  document.getElementById("user-role").textContent = user.role === "admin" ? "Quản trị viên" : "Người dùng";
+  
+  localStorage.setItem("user", JSON.stringify(user));
+}
+
+function showAuthModal() {
+  document.getElementById("auth-modal").style.display = "block";
+  document.getElementById("dashboard").style.display = "none";
+  localStorage.removeItem("user");
+}
+
+// Check if user is already logged in
+window.addEventListener("load", () => {
+  const savedUser = localStorage.getItem("user");
+  if (savedUser) {
+    try {
+      const user = JSON.parse(savedUser);
+      showDashboard(user);
+    } catch (error) {
+      console.error("Error parsing saved user:", error);
+      showAuthModal();
+    }
+  }
+});
+
+// Register form
 const registerForm = document.getElementById("register-form");
 if (registerForm) {
   registerForm.addEventListener("submit", async (event) => {
@@ -53,13 +85,14 @@ if (registerForm) {
       if (event.target && typeof event.target.reset === "function") {
         event.target.reset();
       }
-      setTimeout(() => switchTab("login"), 800);
+      setTimeout(() => switchTab("login"), 1500);
     } catch (error) {
       setMessage("register-message", error.message, true);
     }
   });
 }
 
+// Login form
 const loginForm = document.getElementById("login-form");
 if (loginForm) {
   loginForm.addEventListener("submit", async (event) => {
@@ -76,8 +109,22 @@ if (loginForm) {
       if (event.target && typeof event.target.reset === "function") {
         event.target.reset();
       }
+      
+      // Redirect to dashboard
+      setTimeout(() => {
+        showDashboard(result.user);
+      }, 800);
     } catch (error) {
       setMessage("login-message", error.message, true);
     }
+  });
+}
+
+// Logout button
+const logoutBtn = document.getElementById("logout-btn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    showAuthModal();
+    switchTab("login");
   });
 }

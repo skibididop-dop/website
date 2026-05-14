@@ -152,7 +152,6 @@ h1 {
   display: block;
 }
 
-
 .form-message {
   margin: 4px 2px 0;
   font-size: 20px;
@@ -162,6 +161,78 @@ h1 {
 
 .form-message.error {
   color: #c40000;
+}
+
+/* Dashboard Styles */
+.dashboard {
+  width: 100%;
+  max-width: 800px;
+  background: var(--modal);
+  border-radius: 8px;
+  padding: 40px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 20px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.btn-logout {
+  height: 50px;
+  padding: 0 30px;
+  font-size: 18px;
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.dashboard-content {
+  padding: 20px 0;
+}
+
+.user-info {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.user-info h2 {
+  margin-top: 0;
+  color: var(--primary);
+  font-size: 24px;
+}
+
+.user-info p {
+  font-size: 18px;
+  margin: 12px 0;
+  color: var(--text);
+}
+
+.user-info span {
+  font-weight: 700;
+  color: var(--primary);
 }
 
 @media (max-width: 480px) {
@@ -174,5 +245,23 @@ h1 {
   .fake-recaptcha p,
   .forgot {
     font-size: 30px;
+  }
+
+  .dashboard {
+    padding: 20px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .dashboard-header h1 {
+    font-size: 24px;
+  }
+
+  .btn-logout {
+    width: 100%;
   }
 }

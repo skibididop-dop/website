@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="page">
+    <main class="page" id="page">
+      <!-- Auth Modal (Login/Register) -->
       <section class="auth-modal" id="auth-modal">
         <button class="close-btn" type="button" aria-label="Đóng">×</button>
 
@@ -66,6 +67,22 @@
             <button class="btn btn-secondary" type="button" data-switch="register">TẠO TÀI KHOẢN</button>
             <p class="form-message" id="login-message"></p>
           </form>
+        </div>
+      </section>
+
+      <!-- Dashboard (after login) -->
+      <section class="dashboard" id="dashboard" style="display: none;">
+        <div class="dashboard-header">
+          <h1>Chào mừng, <span id="user-name"></span>!</h1>
+          <button class="btn btn-logout" id="logout-btn">Đăng xuất</button>
+        </div>
+        <div class="dashboard-content">
+          <div class="user-info">
+            <h2>Thông tin tài khoản</h2>
+            <p><strong>Tên tài khoản:</strong> <span id="user-username"></span></p>
+            <p><strong>ID:</strong> <span id="user-id"></span></p>
+            <p><strong>Loại tài khoản:</strong> <span id="user-role"></span></p>
+          </div>
         </div>
       </section>
     </main>
