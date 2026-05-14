@@ -10,19 +10,24 @@ export async function onRequestPost(context) {
   const username = body.username.trim();
   const hash = await sha256(body.password);
 
-  const row = await context.env.DB.prepare(
-    "SELECT id, username, role FROM users WHERE username = ? AND password_hash = ?"
-  )
-    .bind(username, hash)
-    .first();
+  try {
+    const row = await context.env.DB.prepare(
+      "SELECT id, username, role FROM users WHERE username = ? AND password_hash = ?"
+    )
+      .bind(username, hash)
+      .first();
 
-  if (!row) {
-    return jsonResponse({ message: "Sai tài khoản hoặc mật khẩu." }, 401);
+    if (!row) {
+      return jsonResponse({ message: "Sai tài khoản hoặc mật khẩu." }, 401);
+    }
+
+    return jsonResponse({
+      message: `Chào mừng ${row.username}!`,
+      user: row,
+      isAdmin: row.role === "admin",
+    }, 200);
+  } catch (error) {
+    console.error("Login error:", error);
+    return jsonResponse({ message: "Lỗi khi đăng nhập. Vui lòng thử lại." }, 500);
   }
-
-  return jsonResponse({
-    message: `Chào mừng ${row.username}!`,
-    user: row,
-    isAdmin: row.role === "admin",
-  }, 200);
 }
