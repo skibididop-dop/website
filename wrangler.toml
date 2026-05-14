@@ -5,4 +5,4 @@ pages_build_output_dir = "."
 [[d1_databases]]
 binding = "DB"
 database_name = "shoptuimu-db"
-database_id = "YOUR_D1_DATABASE_ID"
+database_id = "72932088-db45-4b86-aaa8-3416cecb6005"
